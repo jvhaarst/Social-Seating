@@ -8,14 +8,14 @@ class Person(object):
         self.name = name
         self.known_people = dict()
 
-    def meets(self, a_guy, propagation = True):
-        "self meets a_guy, and a_guy meets self"
-        if a_guy not in self.known_people:
-            self.known_people[a_guy] = 1
+    def meets(self, person, propagation = True):
+        "self meets person, and person meets self"
+        if person not in self.known_people:
+            self.known_people[person] = 1
         else:
-            self.known_people[a_guy] += 1
+            self.known_people[person] += 1
 
-        if propagation: a_guy.meets(self, False)
+        if propagation: person.meets(self, False)
 
     def points(self, table):
         "Calculates how many new guys self will meet at table"
@@ -57,12 +57,12 @@ def Switcher(n_seats, people):
 
         random.shuffle(people) # need to change "starter"
 
-        for the_guy in people:
-            table = the_guy.chooses(tables, n_seats)
+        for person in people:
+            table = person.chooses(tables, n_seats)
             tables.remove(table)
-            for guy in table:
-                the_guy.meets(guy)
-            table += [the_guy]
+            for individual in table:
+                person.meets(individual)
+            table += [person]
             tables += [table]
 
         switches += [tables]
