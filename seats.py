@@ -18,7 +18,7 @@ class Person(object):
         if propagation: person.meets(self, False)
 
     def points(self, table):
-        "Calculates how many new guys self will meet at table"
+        "Calculates how many new persons self will meet at table"
         return len([p for p in table if p not in self.known_people])
 
     def chooses(self, tables, n_seats):
@@ -68,7 +68,6 @@ def Switcher(n_seats, people):
         switches += [tables]
 
     return switches
-
 
 
 lst_people = [
