@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# From http://stackoverflow.com/questions/968673/speed-dating-algorithm/968724
 import random
 
 class Person(object):
@@ -69,18 +71,22 @@ def Switcher(n_seats, people):
 
 
 
-lst_people = [Person('Hallis'),
-      Person('adi92'),
-      Person('ilya n.'),
-      Person('m_oLogin'),
-      Person('Andrea'),
-      Person('1800 INFORMATION'),
-      Person('starblue'),
-      Person('regularfry')]    
+lst_people = [
+	Person('Alice'),
+	Person('Bob'),
+	Person('Carol'),
+	Person('Chuck'),
+	Person('Dan'),
+	Person('Eve'),
+	Person('Mallory'),
+	Person('Oscar'),
+	Person('Peggy'),
+	Person('Victor'),
+	Person('Trent'),
+	Person('Walter')
+      ] 
 
-
-
-s = Switcher(4, lst_people)
+s = Switcher(6, lst_people)
 
 print "You need %d tables and %d turns" % (len(s[0]), len(s))
 turn = 1
