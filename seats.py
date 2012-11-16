@@ -9,7 +9,7 @@ class Person(object):
         self.known_people = dict()
 
     def meets(self, person, propagation = True):
-        "self meets person, and person meets self"
+        # Self meets person, and person meets self
         if person not in self.known_people:
             self.known_people[person] = 1
         else:
@@ -18,11 +18,11 @@ class Person(object):
         if propagation: person.meets(self, False)
 
     def points(self, table):
-        "Calculates how many new persons self will meet at table"
+        # Calculates how many new persons self will meet at table
         return len([p for p in table if p not in self.known_people])
 
     def chooses(self, tables, n_seats):
-        "Calculate what is the best table to sit at, and return it"
+        # Calculate what is the best table to sit at, and return it
         points = 0
         free_seats = 0
         ret = random.choice([t for t in tables if len(t)<n_seats])
@@ -30,7 +30,9 @@ class Person(object):
         for table in tables:
             tmp_p = self.points(table)
             tmp_s = n_seats - len(table)
+            # Table is full
             if tmp_s == 0: continue
+            # Table has a spot left
             if tmp_p > points or (tmp_p == points and tmp_s > free_seats):
                 ret = table
                 points = tmp_p
@@ -45,8 +47,7 @@ class Person(object):
 
 
 def Switcher(n_seats, people):
-    """calculate how many tables and what switches you need
-        assuming each table has n_seats seats"""
+    # Calculate how many tables and what switches you need assuming each table has n_seats seats
 
     n_people = len(people)
     n_tables = n_people/n_seats
